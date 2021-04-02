@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+
+<body>
+    <head>
+        <title>API Documentation</title>
+        <meta charset="utf-8">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/Api.css">
+    </head>
+    <body>
+        <p>Api Documentation</p>
+        <p>Base URL: <a>https://kaushalanimesh.com/API/V1/</a></p>
+        <div class="item">
+            <h3>
+                /auth
+            </h3>
+            <ul>
+                <li>
+                    Register User (POST /signup)
+                </li>
+                <li>
+                     Login: (POST /login)
+                </li>
+            </ul>
+        </div>
+
+        <div class="item">
+            <h3>
+                /todo
+            </h3>
+            <ul>
+                <li>
+                    Get all TO-DOs for a user (GET /user/:userid)
+                </li>
+                <li>
+                    Add TO-DO (POST /user/:userid)
+                </li>
+                <li>
+                    Edit TO-DO (PUT /user/:userid/:todoID)
+                </li>
+                <li>
+                    Edit an item in a TO-DO (PUT /user/:userid/:todoID/:itemID)
+                </li>
+                <li>
+                    Delete a TO-DO (DELETE /:userid/:todoID)
+                </li>
+                <li>
+                    Delete an item in a TO-DO (DELETE /:userid/:todoID/:itemID)
+                </li>
+            </ul>
+        </div>
+
+        <div class="item2">
+            <h3>
+                Auth
+            </h3>
+            <h4>
+                Register User
+            </h4>
+            <p>
+                Create a new user.
+            </p>
+            <ul>
+                <li>
+                    URL: POST /signup
+                </li>
+                <li>
+                    Sample Request <br/>
+                        {<br/>
+                            "username": "johndoe",<br/>
+                            "password": "asd",<br/>
+                            "firstName": "animesh",<br/>
+                            "lastName":"kaushal"<br/>
+                        }<br/>
+
+                </li>
+                <li>
+                    Sample Response <br/>
+                    Status code: 201 – If user Created<br/>
+                    Status code: 409 – If username already taken<br/>
+                </li>
+            </ul>
+        </div>
+
+        <div class="item2">
+            <h4>
+                Login
+            </h4>
+            <p>
+                Sign in an existing user
+            </p>
+            <ul>
+                <li>
+                    URL: POST /login
+                </li>
+                <li>
+                    Sample Request <br/>
+                        { <br/>
+                            “username”: “animesh”<br/>
+                            “password”: “password”<br/>
+                        }<br/>
+                </li>
+                <li>
+                    Sample Response
+                    <ul>
+                        <li>
+                            Status code: 200 <br/>
+                            {  “userid” : 2 }<br/>
+                        </li>
+                        <li>
+                            Status code: 401
+                        </li>
+                    </ul>
+
+                </li>
+            </ul>
+        </div>
+        <div class = "item2">
+            <h3>TODO</h3>
+            <h4>Get all TO-DOs for a user</h4>
+            <p>Get all to-dos and their corresponding to do lists for a signed in user.</p>
+            <ul>
+                <li>
+                    URL: GET /user/:userid
+                </li>
+                <li>
+                    Sample Request<br/>
+                    <a>https://kaushalanimesh.com/API/V1/user/1</a>
+
+                </li>
+                <li>
+                    Sample response <br/>
+                    {"todo": [<br/>
+                    {"todoID": "1", "date": "2002-19-15", "name":"Chore List", <br/>
+                    "todolist": [<br/>
+                    {"itemID" : 5, "description": "Do the laundry"}, <br/>
+                    {"itemID" : 6, "description": "Walk the dog"}]<br/>
+                    }]<br/>
+                            }<br/>
+
+                </li>
+            </ul>
+        </div>
+        <div class = "item2">
+            <h4>Add TO-DO</h4>
+            <p>Add a TO-DO for a signed in user.</p>
+            <ul>
+                <li>
+                    URL: POST /user/:userid
+                </li>
+                <li>
+                    Sample Request <br/>
+                    {“todo”: { “name”: “chores for weekend”, “date”: “31-03-2021”,<br/>
+                            “todolist”: [<br/>
+                                    {“description”: “pick up groceries”},<br/>
+                                    {“description”: “visit grandmother”}<br/>
+                            ]<br/>
+                        }<br/>
+                    }<br/>
+                </li>
+                <li>
+                    Sample response
+                    <ul>
+                        <li>
+                            Status code: 200
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class = "item2">
+            <h4>Edit TO-DO</h4>
+            <p>Edit a TO-DO for a signed in User.</p>
+            <ul>
+                <li>
+                    URL: PUT /user/:userid/:todoID
+                </li>
+                <li>
+                    Sample Request <br/>
+                        { <br/>
+                            “todoID”: 3, <br/>
+                            “name”: “necessary thing for next week” <br/>
+                        }<br/>
+                </li>
+                <li>
+                    Sample response
+                    <ul>
+                        <li>
+                            Status code: 400 for Bad Request
+                        </li>
+                        <li>
+                            Status code: 204 for Resource Updated Successfully.
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class = "item2">
+            <h4>Edit an item in a TO-DO</h4>
+            <p>Edit an item from the list of items in a TO-DO for a signed in User.</p>
+            <ul>
+                <li>
+                    URL: PUT /user/:userid/:todoID/:itemID
+                </li>
+                <li>
+                    Sample Request <br/>
+                        {<br/>
+                        “todoID”: 3,<br/>
+                        “itemID”: 59,<br/>
+                        “description”: “Go for Yoga”<br/>
+                        }<br/>
+                </li>
+                <li>
+                    Sample response
+                    <ul>
+                        <li>
+                            Status code: 400 for Bad Request
+                        </li>
+                        <li>
+                            Status code: 204 for Resource Updated Successfully.
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class = "item2">
+            <h4>Delete a TO-DO</h4>
+            <p>Delete a TO-DO for a signed in User.</p>
+            <ul>
+                <li>
+                    URL: DELETE /user/:userid/:todoID
+                </li>
+                <li>
+                    Sample Request <br/>
+                        { <br/>
+                        “todoID”: 3 <br/>
+                        } <br/>
+                </li>
+                <li>
+                    Sample response
+                    <ul>
+                        <li>
+                            Status code: 400 for Bad Request
+                        </li>
+                        <li>
+                            Status code: 204 for Resource Updated Successfully.
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <div class = "item2">
+            <h4>Delete an item in a TO-DO</h4>
+            <p>Delete an item from the list of items in a TO-DO for a signed in User.</p>
+            <ul>
+                <li>
+                    URL: DELETE /user/:userid/:todoID/:itemID
+                </li>
+                <li>
+                    Sample Request <br/>
+                    {<br/>
+                    “todoID”: 3,<br/>
+                    “itemID”: 69<br/>
+                    }<br/>
+                </li>
+                <li>
+                    Sample response
+                    <ul>
+                        <li>
+                            Status code: 400 for Bad Request
+                        </li>
+                        <li>
+                            Status code: 204 for Resource Updated Successfully.
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <a href="main.html"><button>Back to Home</button></a>
+    </body>
+</body>
