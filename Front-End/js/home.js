@@ -6,7 +6,7 @@ console.log(uid);
 function createTodos(){
     document.getElementById("todo-list").innerHTML = "";
     let xhttp = new XMLHttpRequest();
-    xhttp.open("GET", "http://localhost:8888/API/V1/user/" + uid, true);
+    xhttp.open("GET", "https://kaushalanimesh.com/API/V1/user/" + uid, true);
     xhttp.setRequestHeader("api-key", "sup3rAp1K3y");
     xhttp.onreadystatechange = function(){
         if(this.readyState == 4 && this.status == 200){
@@ -42,7 +42,7 @@ function createTodos(){
                 deleteButton.appendChild(document.createTextNode("Delete Todo"));
                 deleteButton.onclick = function(){
                     let xhttp2 = new XMLHttpRequest();
-                    xhttp2.open("DELETE", "http://localhost:8888/API/V1/usertodo/" + uid + "/" + list[i].todoID, true);
+                    xhttp2.open("DELETE", "https://kaushalanimesh.com/API/V1/usertodo/" + uid + "/" + list[i].todoID, true);
                     xhttp2.setRequestHeader("api-key", "sup3rAp1K3y");
                     xhttp2.onreadystatechange = function(){
                         if(this.readyState == 4 && this.status == 200){

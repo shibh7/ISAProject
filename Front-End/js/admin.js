@@ -1,8 +1,3 @@
-const tempUName = "admin";
-const tempPWord = "password";
-const tempData = {"stats": [{ "uri": "get", "method" : "xyz", "count": 5 },
-{ "uri": "post", "method" : "abc", "count": 5 }]};
-
 localStorage.clear();
 
 function loadStatistics(statistic){
@@ -47,7 +42,7 @@ document.getElementById("adminLog").onclick = function() {
     if(username.trim() != "" && password.trim() != ""){
             let object = JSON.stringify({"username": username, "password": password});
             let xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "http://localhost:8888/API/V1/adminHome/", true);
+            xhttp.open("POST", "https://kaushalanimesh.com/API/V1/adminHome/", true);
             xhttp.setRequestHeader("api-key", "sup3rAp1K3y");
             xhttp.onreadystatechange = function(){
                 if(this.readyState == 4 && this.status == 200){
