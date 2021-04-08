@@ -12,7 +12,7 @@ document.getElementById("adminLog").onclick = function() {
             console.log(password);
             let postObj = JSON.stringify({"username": username, "password": password});
             let xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "https://kaushalanimesh.com/API/V1/login", true);
+            xhttp.open("POST", "http://localhost:8888/API/V1/login", true);
             xhttp.setRequestHeader("Content-Type", "text/plain");
             xhttp.onreadystatechange = function(){
                 if(this.readyState == 4 && this.status == 200){

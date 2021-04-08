@@ -45,22 +45,19 @@ document.getElementById("adminLog").onclick = function() {
     let password = document.getElementById("password").value;
 
     if(username.trim() != "" && password.trim() != ""){
-        console.log(username);
-        console.log(password);
-        if(username == tempUName && password == tempPWord){
-            document.getElementById("login").style.display = "none";
+            let object = JSON.stringify({"username": username, "password": password});
             let xhttp = new XMLHttpRequest();
-            xhttp.open("GET", "https://kaushalanimesh.com/API/V1/adminHome/", true);
+            xhttp.open("POST", "http://localhost:8888/API/V1/adminHome/", true);
             xhttp.setRequestHeader("Content-Type", "text/plain");
             xhttp.onreadystatechange = function(){
                 if(this.readyState == 4 && this.status == 200){
+                    document.getElementById("login").style.display = "none";
                     loadStatistics(JSON.parse(this.responseText));
+                    console.log(JSON.parse(this.responseText));
                 }
             }
-            xhttp.send();
-        } else {
-            console.log("Login Failed :: Incorrect Password");
-        }
+            xhttp.send(object);
+
     } else {
         console.log("Login Failed :: Both Fields Must Be Filled In");
     }

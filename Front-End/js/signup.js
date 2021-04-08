@@ -16,7 +16,7 @@ document.getElementById("signupbutton").onclick = function() {
         console.log(last);
         let postObj = JSON.stringify({"username": username, "password": password, "firstname": first, "lastname": last});
         let xhttp = new XMLHttpRequest();
-        xhttp.open("POST", "https://kaushalanimesh.com/API/V1/signup/", true);
+        xhttp.open("POST", "http://localhost:8888/API/V1/signup/", true);
         xhttp.setRequestHeader("Content-Type", "text/plain");
         xhttp.onreadystatechange = function(){
             if(this.readyState == 4 && this.status == 201){
