@@ -14,6 +14,7 @@ function generateEditor(dataItems){
         let obj = JSON.stringify({"name": text});
         let xhttp = new XMLHttpRequest();
         xhttp.open("PUT", "http://localhost:8888/API/V1/usertodo/" + uid + "/" + dataItems.todoID, true);
+        xhttp.setRequestHeader("api-key", "sup3rAp1K3y");
         xhttp.onreadystatechange = function(){
             if(this.readyState == 4 && this.status == 204){
                 console.log("Update Successful");
@@ -34,9 +35,10 @@ function generateEditor(dataItems){
         updateItemButton.onclick = function(){
             let textVal = textarea.value;
             console.log(textVal);
-            let obj = JSON.stringify({"name": textVal});
+            let obj = JSON.stringify({"description": textVal});
             let xhttp = new XMLHttpRequest();
             xhttp.open("PUT", "http://localhost:8888/API/V1/usertodo/" + uid + "/" + dataItems.todoID + "/" + list[i].itemID, true);
+            xhttp.setRequestHeader("api-key", "sup3rAp1K3y");
             xhttp.onreadystatechange = function() {
                 if(this.readyState == 4 && this.status == 204){
                     console.log("Update Success");
@@ -48,9 +50,11 @@ function generateEditor(dataItems){
         deleteItemButton.onclick = function(){
             let xhttp = new XMLHttpRequest();
             xhttp.open("DELETE", "http://localhost:8888/API/V1/usertodo/" + uid + "/" + dataItems.todoID + "/" + list[i].itemID, true);
+            xhttp.setRequestHeader("api-key", "sup3rAp1K3y");
             xhttp.onreadystatechange = function(){
                 if(this.readyState == 4 && this.status == 200){
                     console.log("Item Deleted");
+                    window.location.href = "./home.html";
                 }
             }
             xhttp.send();

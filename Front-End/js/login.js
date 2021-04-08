@@ -13,7 +13,7 @@ document.getElementById("adminLog").onclick = function() {
             let postObj = JSON.stringify({"username": username, "password": password});
             let xhttp = new XMLHttpRequest();
             xhttp.open("POST", "http://localhost:8888/API/V1/login", true);
-            xhttp.setRequestHeader("Content-Type", "text/plain");
+            xhttp.setRequestHeader("api-key", "sup3rAp1K3y");
             xhttp.onreadystatechange = function(){
                 if(this.readyState == 4 && this.status == 200){
                     let userID = this.responseText;

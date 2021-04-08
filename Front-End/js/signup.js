@@ -14,10 +14,10 @@ document.getElementById("signupbutton").onclick = function() {
         console.log(password);
         console.log(first);
         console.log(last);
-        let postObj = JSON.stringify({"username": username, "password": password, "firstname": first, "lastname": last});
+        let postObj = JSON.stringify({"username": username, "password": password, "firstName": first, "lastName": last});
         let xhttp = new XMLHttpRequest();
         xhttp.open("POST", "http://localhost:8888/API/V1/signup/", true);
-        xhttp.setRequestHeader("Content-Type", "text/plain");
+        xhttp.setRequestHeader("api-key", "sup3rAp1K3y");
         xhttp.onreadystatechange = function(){
             if(this.readyState == 4 && this.status == 201){
                 document.getElementById("Result").innerHTML = "";
