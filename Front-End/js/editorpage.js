@@ -84,7 +84,8 @@ document.getElementById("addlitem").onclick = function(){
         if(textValue.trim() != ""){
             let objectValue = JSON.stringify({"todoID": idNum, "description": textValue});
             let xhttp = new XMLHttpRequest();
-            xhttp.open("POST", "https://kaushalanimesh.com/API/V1/" + uid, true);
+            xhttp.open("POST", "https://kaushalanimesh.com/API/V1/usertodoitem/" + uid, true);
+            xhttp.setRequestHeader("api-key", "sup3rAp1K3y");
             xhttp.onreadystatechange = function(){
                 if(this.readyState == 4 && this.status == 201){
                     window.location.href = "./home.html";
