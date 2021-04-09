@@ -78,6 +78,23 @@ document.getElementById("addlitem").onclick = function(){
     document.getElementById("newItemText").appendChild(newTextarea);
     let addButton = document.createElement("button");
     addButton.appendChild(document.createTextNode("Add Item"));
+    addButton.onclick = function(){
+        let idNum = data.todoID;
+        let textValue = document.getElementById("newItem").value;
+        if(textValue.trim() != ""){
+            let objectValue = JSON.stringify({"todoID": idNum, "description": textValue});
+            let xhttp = new XMLHttpRequest();
+            xhttp.open("POST", "https://kaushalanimesh.com/API/V1/" + uid, true);
+            xhttp.onreadystatechange = function(){
+                if(this.readyState == 4 && this.status == 201){
+                    window.location.href = "./home.html";
+                }
+            }
+            xhttp.send(objectValue);
+        } else {
+            console.log("You need input");
+        }
+    }
     document.getElementById("newItemText").appendChild(addButton);
     document.getElementById("addlitem").style.display = "none";
 
